@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HIGH | System Core</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Cairo:wght@400;700;900&display=swap');
+
         :root {
-            --bg: #020202;
+            --bg: #000000;
             --p-glow: #bc13fe; 
             --p-dark: #6a0dad;
             --n-blue: #00d4ff;
             --y-neon: #fff01f;
             --text: #ffffff;
-            --danger: #ff003c; /* لون التحذير */
+            --danger: #ff003c;
+            --pure-white: #ffffff;
         }
 
         html, body {
@@ -27,35 +30,74 @@
         }
 
         header {
-            padding: 50px 0;
+            padding: 60px 0;
             text-align: center;
-            border-bottom: 2px solid var(--p-glow);
-            background: radial-gradient(circle at center, #1a0033 0%, #020202 100%);
-            box-shadow: 0 10px 30px rgba(188, 19, 254, 0.2);
+            border-bottom: 2px solid var(--pure-white);
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
         }
 
+        /* تعديل الخط لكلمة HIGH */
         .high-logo {
-            font-size: 3.5rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
             font-weight: 900;
-            color: #fff;
+            color: var(--pure-white);
             text-transform: uppercase;
-            letter-spacing: 12px;
-            text-shadow: 0 0 15px var(--p-glow), 0 0 30px var(--p-glow), 0 0 50px var(--p-dark);
+            letter-spacing: 15px;
+            text-shadow: 0 0 20px var(--pure-white), 0 0 40px rgba(255, 255, 255, 0.5), 0 0 60px var(--n-blue);
+            margin-bottom: 10px;
         }
 
-        .container { padding: 30px 5%; }
-        .section-title { color: var(--y-neon); text-align: center; margin-bottom: 35px; text-shadow: 0 0 10px rgba(255, 240, 31, 0.5); }
+        .container { padding: 40px 5%; }
+        .section-title { color: var(--y-neon); text-align: center; margin-bottom: 35px; text-shadow: 0 0 10px rgba(255, 240, 31, 0.5); font-weight: 900; }
 
-        /* قصة WAVER */
+        /* قصة WAVER المطورة */
         .story-section {
-            background: rgba(188, 19, 254, 0.05);
-            border-right: 4px solid var(--p-glow);
-            padding: 25px;
+            background: linear-gradient(90deg, rgba(188, 19, 254, 0.1), transparent);
+            border-right: 5px solid var(--pure-white);
+            padding: 30px;
             margin: 20px auto;
-            max-width: 900px;
-            border-radius: 0 15px 15px 0;
-            line-height: 1.8;
+            max-width: 950px;
+            border-radius: 0 20px 20px 0;
+            line-height: 2;
+            position: relative;
         }
+
+        .story-section::before {
+            content: 'TOP SECRET';
+            position: absolute;
+            top: 10px; left: 20px;
+            font-size: 0.7rem;
+            color: var(--danger);
+            letter-spacing: 3px;
+        }
+
+        /* قسم الديسكورد الجديد */
+        .discord-section {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            border: 2px solid var(--n-blue);
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
+        }
+
+        .discord-btn {
+            display: inline-block;
+            background: #5865F2;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            margin-top: 20px;
+            transition: 0.3s;
+            box-shadow: 0 0 20px rgba(88, 101, 242, 0.4);
+        }
+
+        .discord-btn:hover { transform: scale(1.1); box-shadow: 0 0 30px #5865F2; }
 
         /* شريط التقدم والأهداف */
         .goal-item {
@@ -86,36 +128,28 @@
             gap: 25px;
         }
 
-        /* تصميم البطاقات الجبار */
+        /* البطاقات */
         .card {
             background: linear-gradient(145deg, #0f0f0f, #050505);
-            border: 2px solid var(--y-neon);
+            border: 2px solid var(--pure-white);
             border-radius: 20px;
             padding: 25px;
             width: 88%;
             max-width: 380px;
             transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5), inset 0 0 15px rgba(255, 240, 31, 0.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
             cursor: pointer;
             position: relative;
             overflow: hidden;
         }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(255,240,31,0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
         .card:hover {
-            transform: translateY(-12px) scale(1.03);
+            transform: translateY(-12px);
             border-color: var(--n-blue);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
         }
 
-        .card h3 { color: var(--y-neon); margin-top: 0; font-size: 1.8rem; letter-spacing: 1px; }
+        .card h3 { color: var(--y-neon); margin-top: 0; font-size: 1.8rem; }
 
         /* الاقتراحات */
         .suggest-grid {
@@ -147,21 +181,20 @@
         .modal.show { display: block; opacity: 1; }
 
         .modal-content {
-            background: #0d001a;
+            background: #050505;
             margin: 8% auto;
             width: 88%;
             max-width: 550px;
             border: 2px solid var(--p-glow);
             border-radius: 25px;
             padding: 25px;
-            box-shadow: 0 0 60px var(--p-dark);
             transform: scale(0.7);
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .modal.show .modal-content { transform: scale(1); }
 
-        .close-btn { color: var(--p-glow); font-size: 2.5rem; cursor: pointer; float: left; margin-top: -10px; }
+        .close-btn { color: var(--pure-white); font-size: 2.5rem; cursor: pointer; float: left; margin-top: -10px; }
 
         .warning-box {
             background: rgba(255, 0, 60, 0.1);
@@ -171,8 +204,6 @@
             border-radius: 10px;
             margin: 15px 0;
             font-weight: bold;
-            font-size: 0.85rem;
-            text-align: center;
         }
 
         .news-container {
@@ -182,51 +213,56 @@
             padding: 12px;
             background: rgba(255,255,255,0.02);
             border-radius: 12px;
-            border: 1px solid rgba(188, 19, 254, 0.2);
         }
 
-        .news-item { border-right: 4px solid var(--p-glow); padding: 8px 12px; margin-bottom: 12px; font-size: 0.95rem; background: rgba(255,255,255,0.03); }
+        .news-item { border-right: 4px solid var(--p-glow); padding: 8px 12px; margin-bottom: 12px; }
 
         .dl-btn {
             display: block; width: 100%; text-align: center; padding: 18px 0;
             margin-top: 20px; background: transparent; border: 2px solid var(--n-blue);
             color: var(--n-blue); text-decoration: none; font-weight: 900;
             border-radius: 10px; cursor: pointer; transition: 0.3s;
-            text-transform: uppercase; letter-spacing: 1px;
         }
 
-        .dl-btn:hover { background: var(--n-blue); color: #000; box-shadow: 0 0 25px var(--n-blue); }
+        .dl-btn:hover { background: var(--n-blue); color: #000; }
 
-        .stats-area { background: linear-gradient(to top, #000, #050505); padding: 60px 5%; text-align: center; }
+        .stats-area { background: #000; padding: 60px 5%; text-align: center; }
         
         input, textarea {
-            width: 100%; background: #050505; border: 1px solid var(--p-glow);
+            width: 100%; background: #0a0a0a; border: 1px solid var(--p-glow);
             padding: 12px; margin: 10px 0; color: white; border-radius: 8px; box-sizing: border-box;
         }
 
-        footer { padding: 50px; text-align: center; border-top: 1px solid rgba(188, 19, 254, 0.2); }
-        .social a { color: var(--p-glow); margin: 0 15px; text-decoration: none; font-weight: bold; }
+        footer { padding: 50px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .social a { color: var(--pure-white); margin: 0 15px; text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="high-logo">HIGH</div>
-        <p style="color: var(--p-glow); opacity: 0.8; letter-spacing: 2px;">System Core Architecture</p>
+        <p style="color: var(--pure-white); opacity: 0.8; letter-spacing: 5px; font-weight: bold;">EVOLUTIONARY SYSTEM CORE</p>
     </header>
 
     <div class="container">
-        <h2 class="section-title">أصل النظام: قصة WAVER</h2>
+        <h2 class="section-title">بروتوكول النشأة: ظلال WAVER</h2>
         <div class="story-section">
-            <p style="color: var(--p-glow); font-weight: bold; margin-bottom: 10px;">[ سجلات النشأة ]</p>
-            بدأت رحلة HIGH من صراع شخصي خاضه المطور ويفر (Waver) مع الفوضى الرقمية. في عام 2026، ومن وسط التحديات التقنية والمعاناة في بناء بيئة برمجية متكاملة، وُلدت الرغبة في إنشاء نظام لا يكتفي بالأداء، بل يمتلك "روحاً" تقنية. كانت البداية في غرفة مظلمة، أكواد لا تنتهي، وإصرار على أن يكون SETVOID هو الأداة التي ترتقي بالبشر إلى رتب السيستم.
+            <p style="color: var(--pure-white); font-weight: bold; margin-bottom: 15px; border-bottom: 1px solid var(--p-glow); display: inline-block;">[ الملف السري 00-X ]</p>
+            <p>لم تكن البداية مجرد سطور كود، بل كانت صرخة تمرد ضد العجز البشري. في عتمة عام 2026، انطلق المطور <strong>WAVER</strong> في مهمة مستحيلة: استنساخ "نظام الارتقاء" من الخيال إلى واقع البرمجيات. من قلب الخوارزميات المعقدة، وُلدت <strong>HIGH</strong> لتكون الكيان الحاكم لمشروع <strong>SETVOID</strong>. نحن لا نبني تطبيقات، نحن نبني أنظمة تعيد تعريف قدراتك، حيث يتحول المستخدم من مجرد "بشري عادي" إلى "صياد مستيقظ" داخل شبكتنا التقنية.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="discord-section">
+            <h2 style="color: var(--pure-white); font-weight: 900;">سيرفر HIGH: عرين الصيادين</h2>
+            <p style="max-width: 700px; margin: 20px auto; color: #ccc;">انضم إلى القلب النابض للنظام. هنا حيث تلتقي النخبة، نناقش آخر تحديثات <strong>SETVOID</strong>، ونكشف عن التسريبات الحصرية قبل الجميع. كوّن تحالفات مع "المستيقظين" الآخرين، شارك في فعاليات السيرفر، وكن جزءاً من تطوير السيستم القادم.</p>
+            <a href="https://discord.gg/YOUR_LINK_HERE" class="discord-btn">انضم إلى Discord الآن</a>
         </div>
     </div>
 
     <div class="container">
         <h2 class="section-title">أهداف المؤسسة</h2>
-        <div id="goals-container">
-            </div>
+        <div id="goals-container"></div>
     </div>
 
     <div class="container">
@@ -256,22 +292,21 @@
         <div class="grid">
             <div class="card" style="border-color: var(--p-glow);" onclick="openModal('contactModal')">
                 <h3>إرسال اقتراح أو رسالة</h3>
-                <p>رأيك يغير مسار النظام. أرسل رسالة مباشرة لويفر.</p>
+                <p>اقتراحك سيصل مباشرة لبريد WAVER للمراجعة والاعتماد.</p>
             </div>
         </div>
     </section>
 
     <section class="container">
-        <h2 class="section-title">أفضل الاقتراحات</h2>
-        <div class="suggest-grid" id="suggestions-box">
-            </div>
+        <h2 class="section-title">الاقتراحات المعتمدة</h2>
+        <div class="suggest-grid" id="suggestions-box"></div>
     </section>
 
     <section class="stats-area">
         <h2 class="section-title">برنامج الشراكة</h2>
-        <div class="card" style="border-color: var(--p-glow); margin: auto;" onclick="openModal('partnerModal')">
+        <div class="card" style="border-color: var(--danger); margin: auto;" onclick="openModal('partnerModal')">
             <h3>تقديم اتفاقية شراكة</h3>
-            <p>انضم إلى شبكة HIGH التقنية.</p>
+            <p>انضم إلى شبكة HIGH التقنية الرسمية.</p>
             <p style="color: var(--y-neon); font-weight: bold;">طلبات الشراكة الحالية: <span id="partnerCount">0</span></p>
         </div>
     </section>
@@ -279,25 +314,18 @@
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('contactModal')">&times;</span>
-            <h2 style="color: var(--n-blue);">أرسل لـ WAVER</h2>
+            <h2 style="color: var(--n-blue);">بروتوكول التواصل</h2>
             <input type="text" id="senderName" placeholder="اسمك المستعار">
-            <textarea id="senderMsg" rows="4" placeholder="اكتب اقتراحك هنا..."></textarea>
-            <button class="dl-btn" onclick="sendToWaver()">إرسال الرسالة</button>
-            <div style="margin-top: 20px; text-align: center;">
-                <p>مواقع التواصل الاجتماعي:</p>
-                <a href="#" style="color: var(--p-glow);">Discord</a> | 
-                <a href="#" style="color: var(--n-blue);">X-Project</a> | 
-                <a href="#" style="color: var(--y-neon);">Instagram</a>
-            </div>
+            <textarea id="senderMsg" rows="4" placeholder="اكتب اقتراحك هنا ليتم مراجعته..."></textarea>
+            <button class="dl-btn" onclick="sendToWaver()">إرسال إلى النظام</button>
         </div>
     </div>
 
     <div id="setvoidModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('setvoidModal')">&times;</span>
-            <h2 style="color: var(--p-glow); text-shadow: 0 0 10px var(--p-glow);">نظام SETVOID</h2>
+            <h2 style="color: var(--p-glow);">نظام SETVOID</h2>
             <p style="font-size: 0.85rem; color: #aaa;">النسخة: V1.0.4 [REAWAKENED]</p>
-            <h4 style="color: var(--y-neon); margin-bottom: 10px;">آخر سجلات النظام:</h4>
             <div class="news-container">
                 <div class="news-item">تفعيل بروتوكول "الطلب المسبق" للرتب العليا.</div>
                 <div class="news-item">تحسين واجهة المستخدم لتناسب الأجهزة اللوحية.</div>
@@ -312,20 +340,20 @@
             <span class="close-btn" onclick="closeModal('supportModal')">&times;</span>
             <h2 style="color: var(--n-blue);">المشاريع المتاحة</h2>
             <div class="news-item" style="border-color: var(--y-neon);">تطبيق SETVOID (مفتوح للدعم)</div>
-            <p style="font-size: 0.9rem; color: #ccc;">الدعم المادي يساعدنا على توفير خوادم أسرع وتحديثات برمجية يومية جبارة.</p>
+            <p>الدعم المادي يضمن استمرارية تطوير نظام خالي من القيود.</p>
         </div>
     </div>
 
     <div id="partnerModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('partnerModal')">&times;</span>
-            <h2 style="color: var(--p-glow);">اتفاقية الشراكة</h2>
+            <h2 style="color: var(--danger);">اتفاقية الشراكة</h2>
             <input type="text" id="pAppName" placeholder="اسم تطبيقك / مشروعك">
-            <input type="text" id="pSocials" placeholder="مواقع التواصل الاجتماعي الخاصة بك">
+            <input type="text" id="pSocials" placeholder="مواقع التواصل الاجتماعي">
             <div class="warning-box">
-                ⚠️ تحذير صارم: يمنع الضغط أو التقديم لمجرد التسلية. سيتم حظر أي بريد إلكتروني غير جاد نهائياً من أنظمتنا.
+                ⚠️ تحذير: سيتم حظر أي طلبات غير جادة بشكل نهائي من النظام.
             </div>
-            <button class="dl-btn" style="border-color: var(--p-glow); color: var(--p-glow);" onclick="handlePartnerRequest()">تقديم اتفاقية رسمية</button>
+            <button class="dl-btn" style="border-color: var(--danger); color: var(--danger);" onclick="handlePartnerRequest()">تقديم طلب رسمي</button>
         </div>
     </div>
 
@@ -333,18 +361,23 @@
         <div class="social">
             <a href="#">DISCORD</a> | <a href="#">INSTAGRAM</a> | <a href="#">X-PROJECT</a>
         </div>
-        <p style="margin-top:30px; opacity:0.4; font-size: 0.8rem;">© 2026 HIGH SYSTEM INTERFACE. NO ADMITTANCE FOR LOW RANKS.</p>
+        <p style="margin-top:30px; opacity:0.4; font-size: 0.8rem;">© 2026 HIGH SYSTEM INTERFACE. AUTHENTICATED BY WAVER.</p>
     </footer>
 
     <script>
         let dCount = 0;
         let pCount = 0;
 
-        // --- إدارة الأهداف (يمكنك التعديل هنا بسهولة) ---
         const highGoals = [
             { title: "كمال سيستم SETVOID", desc: "الوصول بالبرمجية إلى مرحلة الاستقرار الكلي.", pct: 85 },
-            { title: "بناء مجتمع HIGH", desc: "تجميع 100 ألف مستخدم تحت راية النظام.", pct: 60 },
-            { title: "الربط التقني الموحد", desc: "ربط جميع التطبيقات ببروتوكول واحد.", pct: 30 }
+            { title: "بناء مجتمع HIGH", desc: "تجميع الصيادين تحت راية واحدة.", pct: 60 },
+            { title: "الربط التقني الموحد", desc: "ربط التطبيقات ببروتوكول HIGH الموحد.", pct: 30 }
+        ];
+
+        // مصفوفة الاقتراحات (يتم تحديثها يدوياً من قبلك بعد وصول البريد)
+        const bestSuggestions = [
+            { user: "يوسف", text: "إضافة نظام مستويات (Levels) للمستخدمين.", date: "2026/04/10", color: "var(--p-glow)" },
+            { user: "المطور X", text: "فتح API للمطورين الآخرين للربط مع السيستم.", date: "2026/04/13", color: "var(--n-blue)" }
         ];
 
         function loadGoals() {
@@ -353,20 +386,13 @@
                 <div class="goal-item">
                     <div style="display:flex; justify-content:space-between">
                         <strong style="color:var(--n-blue)">${g.title}</strong>
-                        <span style="color:var(--p-glow)">${g.pct}%</span>
+                        <span style="color:var(--pure-white)">${g.pct}%</span>
                     </div>
                     <p style="font-size:0.85rem; color:#888; margin:5px 0;">${g.desc}</p>
                     <div class="progress-track"><div class="progress-fill" style="width:${g.pct}%"></div></div>
                 </div>
             `).join('');
         }
-
-        // --- إدارة الاقتراحات ---
-        const bestSuggestions = [
-            { user: "يوسف", text: "إضافة نظام مستويات (Levels) للمستخدمين.", date: "2026/04/10", color: "var(--p-glow)" },
-            { user: "ليلى", text: "توفير واجهة باللون السماوي الهادئ.", date: "2026/04/12", color: "var(--n-blue)" },
-            { user: "المطور X", text: "فتح API للمطورين الآخرين.", date: "2026/04/13", color: "var(--y-neon)" }
-        ];
 
         function loadSuggestions() {
             const container = document.getElementById('suggestions-box');
@@ -376,7 +402,7 @@
                     <p style="font-size:0.9rem; margin:10px 0;">${s.text}</p>
                     <div style="display:flex; justify-content:space-between; font-size:0.7rem; opacity:0.5;">
                         <span>${s.date}</span>
-                        <span>شكر وتقدير من WAVER</span>
+                        <span>معتمد من قبل WAVER</span>
                     </div>
                 </div>
             `).join('');
@@ -385,23 +411,22 @@
         function handlePreOrder() {
             dCount++;
             document.getElementById('demandCount').innerText = dCount;
-            const body = "أرغب في الطلب المسبق لـ SETVOID:\n\n- الاسم:\n- العمر:\n- اليوم:\n- نوع الجهاز:\n- سبب الطلب:";
-            window.location.href = `mailto:momnsuper2010@gmail.com?subject=SETVOID PRE-ORDER&body=${encodeURIComponent(body)}`;
+            window.location.href = `mailto:momnsuper2010@gmail.com?subject=SETVOID PRE-ORDER&body=أرغب في الانضمام للرتب العليا...`;
         }
 
         function sendToWaver() {
             const n = document.getElementById('senderName').value;
             const m = document.getElementById('senderMsg').value;
-            window.location.href = `mailto:momnsuper2010@gmail.com?subject=Message from ${n}&body=${encodeURIComponent(m)}`;
+            // يتم إرسال الاقتراح لبريدك، وبعد موافقتك تضعه في كود الموقع يدوياً
+            window.location.href = `mailto:momnsuper2010@gmail.com?subject=New Suggestion from ${n}&body=${encodeURIComponent(m)}`;
+            alert("تم إرسال اقتراحك للمراجعة. سيظهر هنا في حال تم اعتماده من WAVER.");
         }
 
         function handlePartnerRequest() {
             pCount++;
             document.getElementById('partnerCount').innerText = pCount;
             const app = document.getElementById('pAppName').value;
-            const soc = document.getElementById('pSocials').value;
-            const body = `طلب شراكة رسمي:\nتطبيق: ${app}\nتواصل: ${soc}`;
-            window.location.href = `mailto:momnsuper2010@gmail.com?subject=PARTNERSHIP REQUEST&body=${encodeURIComponent(body)}`;
+            window.location.href = `mailto:momnsuper2010@gmail.com?subject=PARTNERSHIP REQUEST&body=طلب شراكة لـ: ${app}`;
         }
 
         function openModal(id) {
@@ -422,7 +447,6 @@
             if (e.target.classList.contains('modal')) closeModal(e.target.id);
         }
 
-        // تشغيل التحميل الأولي
         loadGoals();
         loadSuggestions();
     </script>
